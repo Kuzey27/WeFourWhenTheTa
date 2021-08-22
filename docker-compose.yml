@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  nginx:
+    container_name: wenginx:latest
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - wefour
+
+  shenas:
+    container_name: shenas:latest
+    restart: always
+    networks:
+      - wefour
+    volumes:
+      - shenas.sqlite3:db.sqlite3
+
+  sokhan:
+    container_name: sokhan:latest
+    restart: always
+    networks:
+      - wefour
+    volumes:
+      - sokhan.sqlite3:db.sqlite3
+
+networks:
+  wefour:
